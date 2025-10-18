@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientBody from "./ClientBody";
+import { Web3Provider } from "@/components/Web3Provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Web3 Identity",
-  description: "Web3 Identity Platform",
+  title: "Web3 Identity - VerifyID",
+  description: "Verificación de identidad descentralizada para el futuro de Web3",
 };
 
 export default function RootLayout({
@@ -24,9 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body suppressHydrationWarning className="antialiased">
-        <ClientBody>{children}</ClientBody>
+        <Web3Provider>
+          <ClientBody>{children}</ClientBody>
+        </Web3Provider>
       </body>
     </html>
   );
